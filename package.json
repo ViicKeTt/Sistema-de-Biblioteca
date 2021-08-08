@@ -1,0 +1,21 @@
+{
+    "name": "segundoparcialnode",
+    "version": "1.0.0",
+    "description": "Sistema de biblioteca utilizando node js y el patrón arquitectónico de mvc",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "author": "Esmerlin Borges Corporan",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.3",
+        "mysql2": "^2.3.0",
+        "sequelize": "^6.6.5"
+    }
+}

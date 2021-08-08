@@ -1,0 +1,28 @@
+<section>
+     <div class="mt-5 page-wrapper font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title text-dark">{{#if editMode}}Editar Autor{{else}}Registrar Autor{{/if}}</h2>
+                    <form method="POST" action="{{#if editMode}}/Editar-Autor{{else}}/Add-Autor{{/if}}"> --}}
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" placeholder="NOMBRE" name="nombreAutor" value="{{#if editMode}}{{autor.nombreAutor}}{{/if}}">
+                        </div> 
+                        <div class="row row-space"> 
+                                <div class="input-group">
+                                    <input class="input--style-1" type="email" placeholder="DIGITE EL EMAIL" name="correo" value="{{#if editMode}}{{autor.correo}}{{/if}}"> 
+                            </div>
+                        </div>
+                        {{#if editMode}} 
+                            <input type="hidden" name="idAutor" value="{{autor.idAutor}}"> 
+                        {{/if}}
+                        <div class="p-t-20">
+                            <button class="btn btn--radius btn--green" type="submit">Agregar autor</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

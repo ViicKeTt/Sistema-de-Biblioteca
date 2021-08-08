@@ -1,0 +1,33 @@
+<section>
+  <div class="row">
+    <div class="col-md-8"></div>
+    <div class="mt-5 col-md-3">
+      <a href="/AddAutor" class="btn btn-primary">Agregar autor</a>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <div class="container"> 
+  <div class="row"> 
+    {{#if hasAutor}}
+    <h1 class="mb-5"> Lista de Autores</h1>
+    {{#each autor}}
+      <div class="m-2 card bg-dark-opacity-10" style="width: 18rem;"> 
+  <div class="card-body">
+    <h5 class="text-black card-title"><b>Nombre del autor: </b>{{this.nombreAutor}}</h5>
+    <p class="text-black card-text"><b>Correo:</b>{{this.correo}}</p>
+    <a href="/EditarAutor/{{this.idAutor}}?edit=true" class="mt-3 btn btn-warning">Editar</a>
+    <form method="POST" action="/AutorDelete" class="SegundoForm" >
+      <input type="hidden" name="idAutor" value="{{this.idAutor}}" />
+      <button type="submit" class="mt-3 btn btn-danger" style="display: inline-block; ">Eliminar</button>
+    </form>
+  </div>
+</div>
+
+   
+    {{/each}}
+    {{else}}
+      <h1>No hay Autores regitrados</h1>
+    {{/if}}
+    
+     
+</section>
