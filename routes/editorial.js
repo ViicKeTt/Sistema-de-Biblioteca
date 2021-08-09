@@ -3,10 +3,15 @@ const router = express.Router();
 const editotialontroller = require("../controllers/EditorialController");
 
 
-router.get("/Editorial", editotialontroller.GetEditorial);
-// router.get("/AddEditorial", editotialontroller.GetAddAutor);
-// router.post("/Add-Editorial", editotialontroller.PostAddAutor);
+router.get("/Editoriales", editotialontroller.GetEditorial);
 
+router.get("/AddEditorial", editotialontroller.GetAddEditorial);
+router.post("/Add-Editorial", editotialontroller.PostAddEditorial);
+
+router.get("/EditarEditorial/:IdEditorial", editotialontroller.GetEditEditorial);
+router.post("/Editar-Editorial", editotialontroller.PostEditEditorial);
+
+router.post("/EditorialDelete", editotialontroller.PostDeleteEditorial);
 
 
 

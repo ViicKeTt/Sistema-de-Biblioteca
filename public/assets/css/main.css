@@ -501,6 +501,16 @@ input {
     padding-top: 210px;
 }
 
+.card-2 .card-heading {
+    background: url("../../assets/img/Editorial-Clio.jpg") center center/cover no-repeat;
+    padding-top: 210px;
+}
+
+.card-3 .card-heading {
+    background: url("../../assets/img/autor.jpg") center center/cover no-repeat;
+    padding-top: 210px;
+}
+
 .card-1 .card-body {
     padding: 0 90px;
     padding-top: 55px;
