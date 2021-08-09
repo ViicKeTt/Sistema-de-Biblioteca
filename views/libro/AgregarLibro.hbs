@@ -1,45 +1,24 @@
 <section>
      <div class="mt-5 page-wrapper font-robo">
         <div class="wrapper wrapper--w680">
-            <div class="card card-1">
+            <div class="card card-1 card-3">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title text-dark">Registrar Autor</h2>
-                    <form method="POST" action="/Add-Autor">
+                    <h2 class="title text-dark">{{#if editMode}}Editar Libro{{else}}Registrar libro{{/if}}</h2>
+                    <form method="POST" action="{{#if editMode}}/Edit-Libro{{else}}/Add-Libro{{/if}}">
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="NOMBRE" name="nombreAutor" required>
-                        </div> 
-                        <div class="row row-space"> 
-                                <div class="input-group">
-                                    <input class="input--style-1" type="email" placeholder="DIGITE EL EMAIL" name="correo" required> 
-                            </div>
-                        </div>
-                        <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Agregar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><section>
-     <div class="mt-5 page-wrapper font-robo">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-1">
-                <div class="card-heading"></div>
-                <div class="card-body">
-                    <h2 class="title text-dark">Registrar Autor</h2>
-                    <form method="POST" action="/Add-Autor">
+                            <input class="input--style-1" type="text" placeholder="NOMBRE DEL LIBRO" name="nombreLibro" value="{{#if editMode}}{{libro.nombreLibro}}{{/if}}">
+                        </div>  
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="NOMBRE" name="nombreAutor" required>
-                        </div> 
-                        <div class="row row-space"> 
-                                <div class="input-group">
-                                    <input class="input--style-1" type="email" placeholder="DIGITE EL EMAIL" name="correo" required> 
-                            </div>
-                        </div>
-                        <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Agregar</button>
+                            <input class="input--style-1" type="number" placeholder="DIGITE EL AÑO DE PUBLICACION" name="anoPublicacion" value="{{#if editMode}}{{libro.anoPublicacion}}{{/if}}" min="1940" max="2021"> 
+                        </div>  
+                        
+                        {{#if editMode}} 
+                            <input type="hidden" name="idLibro" value="{{libro.idLibro}}"> 
+                        {{/if}}
+                        <div 
+                        class="p-t-20">
+                            <button class="btn btn--radius btn--green" type="submit">{{#if editMode}}Editar libro{{else}}Agregar libro{{/if}}</button>
                         </div>
                     </form>
                 </div>
