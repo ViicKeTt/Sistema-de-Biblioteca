@@ -1,9 +1,14 @@
 const Autor = require("../models/Autor");
 
 exports.GetAutores = (req, res, next) => {
-    Autor.findAll().then((result) => {
+    Autor.findAll({
+        order: [
+            ['nombreAutor', 'ASC'],
+        ]
+    }).then((result) => {
         //Lo que trae es como un JSON por lo cual hay que accesar a el, esto se usa mucho
         const autores = result.map((result) => result.dataValues);
+
         res.render("autor/ListaAutores", {
             pageTitle: "Mantenimientos de Autores1",
             AutorActive: true,

@@ -1,7 +1,11 @@
 const Editorial = require("../models/Editorial");
 
 exports.GetEditorial = (req, res, next) => {
-    Editorial.findAll().then((result) => {
+    Editorial.findAll({
+        order: [
+            ['nombreEditorial', 'ASC'],
+        ]
+    }).then((result) => {
         //Lo que trae es como un JSON por lo cual hay que accesar a el, esto se usa mucho
         const editorial = result.map((result) => result.dataValues);
         res.render("editorial/ListaEditorial", {

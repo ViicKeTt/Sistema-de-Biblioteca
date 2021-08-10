@@ -1,26 +1,56 @@
 const Libro = require("../models/Libro");
+const Autor = require("../models/Autor");
+const Editorial = require("../models/Editorial");
 
 exports.GetLibros = (req, res, next) => {
-    Libro.findAll().then((result) => {
-        //Lo que trae es como un JSON por lo cual hay que accesar a el, esto se usa mucho
-        const Libro = result.map((result) => result.dataValues);
-        res.render("libro/ListaLibros", {
-            pageTitle: "Mantenimientos de libros",
-            LibroActive: true,
-            libro: Libro,
-            hasLibro: Libro.length > 0,
+    Autor.findAll().then((result) => {
+        const hasEditorial = result.map((result) => result.dataValues);
+
+        Editorial.findAll().then((result) => {
+            const hasAutor = result.map((result2) => result2.dataValues);
+
+            Libro.findAll({
+                order: [
+                    ['nombreLibro', 'ASC'],
+                ]
+            }).then((result) => {
+                //Lo que trae es como un JSON por lo cual hay que accesar a el, esto se usa mucho
+                const Libro = result.map((result) => result.dataValues);
+
+                res.render("libro/ListaLibros", {
+                    pageTitle: "Mantenimientos de libros",
+                    LibroActive: true,
+                    libro: Libro,
+                    hasLibro: Libro.length > 0,
+                    autores: hasAutor.length > 0,
+                    editoriales: hasEditorial.length > 0,
+                });
+            });
+        });
+    });
+};
+
+exports.GetAddLibro = (req, res, next) => {
+    Autor.findAll().then((result) => {
+        const hasEditorial = result.map((result) => result.dataValues);
+        Editorial.findAll().then((result) => {
+            const hasAutor = result.map((result) => result.dataValues);
+
+            res.render("Libro/AgregarLibro", {
+                pageTitle: "Añadir Libro",
+                LibroActive: true,
+                editMode: false,
+                autores: hasAutor.length > 0,
+                editoriales: hasEditorial.length > 0,
+            });
+        }).catch((err) => {
+            console.log(err);
         });
     }).catch((err) => {
         console.log(err);
     });
 };
-exports.GetAddLibro = (req, res, next) => {
-    res.render("Libro/AgregarLibro", {
-        pageTitle: "Añadir Libro",
-        LibroActive: true,
-        editMode: false,
-    });
-};
+
 exports.PostAddLibro = (req, res, next) => {
     const NombreLibro = req.body.nombreLibro;
     const anoPublicacion = req.body.anoPublicacion;

@@ -1,4 +1,6 @@
 <section>
+   {{#if autores }}
+     {{#if editoriales}}
      <div class="mt-5 page-wrapper font-robo">
         <div class="wrapper wrapper--w680">
             <div class="card card-1 card-3">
@@ -25,4 +27,9 @@
             </div>
         </div>
     </div>
+     {{else}}
+     {{/if}}
+     {{else}}
+    <h1>No hay Editoriales o autores regitrados</h1>
+   {{/if}}
 </section>
