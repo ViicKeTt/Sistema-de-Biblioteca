@@ -31,25 +31,21 @@ exports.GetLibros = (req, res, next) => {
 };
 
 exports.GetAddLibro = (req, res, next) => {
-    Autor.findAll().then((result) => {
-        const hasEditorial = result.map((result) => result.dataValues);
-        Editorial.findAll().then((result) => {
-            const hasAutor = result.map((result) => result.dataValues);
 
-            res.render("Libro/AgregarLibro", {
-                pageTitle: "Añadir Libro",
-                LibroActive: true,
-                editMode: false,
-                autores: hasAutor.length > 0,
-                editoriales: hasEditorial.length > 0,
-                autor: hasAutor,
-                editorial: hasEditorial,
-            });
-        }).catch((err) => {
-            console.log(err);
+    Promise.all([Autor.findAll(), Editorial.findAll()]).then(data => {
+        const autores = data[0].map((result) => result.dataValues);
+        const editoriales = data[1].map((result) => result.dataValues);
+        res.render("Libro/AgregarLibro", {
+            pageTitle: "Añadir Libro",
+            LibroActive: true,
+            editMode: false,
+            autores: autores.length > 0,
+            editoriales: editoriales.length > 0,
+            autor: autores,
+            editorial: editoriales,
         });
-    }).catch((err) => {
-        console.log(err);
+    }).catch(error => {
+        console.log(error);
     });
 };
 

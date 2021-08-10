@@ -15,6 +15,26 @@
                             <input class="input--style-1" type="number" placeholder="DIGITE EL AÑO DE PUBLICACION" name="anoPublicacion" value="{{#if editMode}}{{libro.anoPublicacion}}{{/if}}" min="1940" max="2021"> 
                         </div>  
                         
+    <div class="mb-3"> 
+    <select class="form-select" id="autor" name="autor">
+      <option {{#if editMode}}{{else}}{{/if}}>Seleccione un autor</option> 
+      {{#each autor as |aut|}} 
+    <option value="{{aut.idAutor}}">{{aut.nombreAutor}}</option>
+      {{/each}} 
+    </select>
+    </div>
+<br>
+    <div class="mb-3"> 
+    <select class="form-select" id="autor" name="autor">
+      <option {{#if editMode}}{{else}}{{/if}}>Seleccione un editorial</option> 
+      {{#each editorial as |edito|}} 
+    <option value="{{edito.idEditorial}}">{{edito.nombreEditorial}}</option>
+      {{/each}} 
+    </select>
+    </div>
+
+
+
                         {{#if editMode}} 
                             <input type="hidden" name="idLibro" value="{{libro.idLibro}}"> 
                         {{/if}}

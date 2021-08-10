@@ -16,26 +16,13 @@
  <div class="col-md-3">
   <div class="card bg-dark bg-gradient">
     <div class="card-header">
-      <b>Nombre editorial: </b>{{this.nombreLibro}}
+      <b>Nombre del libro: </b>{{this.nombreLibro}}
     </div>
     <div class="card-body">
-    <h5 class="card-title"><b>Telefono: </b>{{this.anoPublicacion}}</h5> 
-    
-    {{!-- <div class="mb-3">
-    <label for="races" class="form-label">Raza: </label>
-    <select class="form-select" id="races" name="Races">
-      <option {{#if editMode}}{{else}}selected{{/if}}>Seleccione una opcion</option>
-
-      {{#each autor as |race|}}
-
-          {{#if (equalValue race.idAutor ../hero.raceId )}}
-          <option selected value="{{race.id}}">{{race.name}}</option>
-          {{else}}
-          <option value="{{race.id}}">{{race.name}}</option>
-          {{/if}} 
-        {{/each}} 
-    </select>
-    </div> --}}
+    <h5 class="card-title"><b>Año de publicacion: </b>{{this.anoPublicacion}}</h5> 
+    <h5 class="card-title"><b>Id del Autor: </b>{{this.AutoreIdAutor}}</h5> 
+    <h5 class="card-title"><b>Id del editorial: </b>{{this.EditorialeIdEditorial}}</h5> 
+     
      
     <a href="/EditLibro/{{this.idLibro}}?edit=true" class="mt-3 btn btn-warning">Editar</a>
       <form method="POST" class="SegundoForm" action="/DelteLibro">

@@ -17,11 +17,22 @@ const libroRouter = require("./routes/libros");
 //Controller para el 404 not found
 const errorController = require("./controllers/ErrorController");
 
+//Me ayuda a Traer datos
+const compareHelpers = require('./utils/hbs/compare');
+
+
 // Uso de Express
 const app = express();
 
 // Para usar handlerbars 
-app.engine("hbs", expressHbs({ layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
+app.engine("hbs", expressHbs({
+    layoutsDir: 'views/layouts/',
+    defaultLayout: 'main-layout',
+    extname: 'hbs',
+    helpers: {
+        equalValue: compareHelpers.EqualValue,
+    },
+}));
 app.set("view engine", "hbs");
 app.set("views", "views");
 
