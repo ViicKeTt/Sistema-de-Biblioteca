@@ -1,3 +1,3 @@
-exports.EqualValue = (value,EqualValue) => {
+exports.EqualValue = (value, EqualValue) => {
     return value === EqualValue;
-}
+};

@@ -73,7 +73,7 @@ exports.GetEditAutor = (req, res, next) => {
 exports.PostEditAutor = (req, res, next) => {
     const IdAutor = req.body.idAutor;
     const Nombre = req.body.nombreAutor;
-    const Correo = req.body.Description;
+    const Correo = req.body.correo;
 
     Autor.update({ nombreAutor: Nombre, correo: Correo }, { where: { idAutor: IdAutor } }).then((result) => {
             return res.redirect("/Autores");

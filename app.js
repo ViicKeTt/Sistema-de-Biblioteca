@@ -44,7 +44,14 @@ app.use(libroRouter);
 
 app.use("/", errorController.Get404);
 
+// Relalaciones
+Libro.belongsTo(Autor, { constraint: true, onDelete: "CASCADE" });
+Autor.hasMany(Libro);
 
+Libro.belongsTo(Editorial, { constraint: true, onDelete: "CASCADE" });
+Editorial.hasMany(Libro);
+
+// { force: true }  /Para forzar la BD
 sequelize.sync().then(result => {
     app.listen(6001);
 

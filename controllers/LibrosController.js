@@ -42,6 +42,8 @@ exports.GetAddLibro = (req, res, next) => {
                 editMode: false,
                 autores: hasAutor.length > 0,
                 editoriales: hasEditorial.length > 0,
+                autor: hasAutor,
+                editorial: hasEditorial,
             });
         }).catch((err) => {
             console.log(err);
@@ -82,6 +84,8 @@ exports.GetEditLibro = (req, res, next) => {
                 LibroActive: true,
                 editMode: edit,
                 libro: libro,
+                autores: true,
+                editoriales: true,
             });
         }).catch((err) => {
             console.log(err);
